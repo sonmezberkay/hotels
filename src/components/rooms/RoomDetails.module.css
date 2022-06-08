@@ -1,0 +1,55 @@
+.item {
+    margin: 1rem 0;
+    display: flex;
+    border: 1px solid black;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+    margin: 0 1rem 0 0;
+    border-right: 1px solid #333;
+    text-align: center;
+    padding: 0 .25rem .5rem .25rem;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 0 0 1rem;
+}
+
+.right-bottom {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.name {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.occupancy {
+    font-size: .9rem;
+    margin-top: .8rem;
+    margin-bottom: 0;
+}
+
+.access {
+    color: black;
+    font-size: .9rem;
+}
+
+.longDescription {
+    font-size: .8rem;
+    padding-right: 1rem;
+    margin-bottom: 0;
+}
+
+.bed {
+    font-size: .9rem;
+}

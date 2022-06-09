@@ -1,5 +1,5 @@
 import HotelList from "./hotels/HotelList";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Filter from "./filters/Filter";
 
 
@@ -8,11 +8,12 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [loadedHotels, setLoadedHotels] = useState([]);
-//   const [loadedRooms, setLoadedRooms] = useState(null);
-//   const [loadedRatePlans, setLoadedRatePlans] = useState(null);
-//   const [data1, setData1] = useState([]);
+  const [loadedRooms1, setLoadedRooms1] = useState([]);
+  //const [loadedRatePlans1, setLoadedRatePlans1] = useState(null);
+  //const [data1, setData1] = useState([]);
 
-//   const [hotelId, setHotelId] = useState();
+
+   const [hotelId, setHotelId] = useState([]);
 
 
 
@@ -25,10 +26,10 @@ const Home = () => {
             ).then(response => {
               return response.json();
             }).then(data => {
-                // for (let i = 0; i<data.length; i++) {
-                //     const hotelid = data[i]['id'];
-                //     fetchRooms(hotelid)
-                // }
+                 for (let i = 0; i<data.length; i++) {
+                     const hotelid = data[i]['id'];
+                     setHotelId(prevId => prevId.concat(hotelid))
+                 }
         
                 const hotels = [];
         
@@ -48,33 +49,41 @@ const Home = () => {
         fetchHotels();
       }, []);
 
+      if(hotelId.length === 4) {
+        console.log('hotel IDs', hotelId)
+        
+      }
 
-      
-    //   async function fetchRooms (hotelid) {
-    //       try {
-    //           const res = await fetch(`https://obmng.dbm.guestline.net/api/roomRates/OBMNG/${hotelid}`)
-    //           if (!res.ok) {
-    //               throw new Error(res.statusText);
-    //           }
-    //           const data = await res.json();
-    //           //console.log(data)
-    //           if(data) {
-    //               console.log(hotelid, data)
-    //               setData1(data);
-    //               setLoadedRooms(data.rooms)
-    //               setLoadedRatePlans(data.ratePlans)
-    //           }
-    //       } catch (err) {
-    //           console.log("could not fetch");
-    //       }
-    //   }
 
-    //   useEffect(() => {
-    //     fetchRooms();
-    // }, [])
 
-    // console.log('data',data1)
-      
+    //     const fetchRooms = useCallback ( async () => {
+    //      if (hotelId.length === 4) {
+    //        try {
+    //            const res = await fetch(`https://obmng.dbm.guestline.net/api/roomRates/OBMNG/${hotelId[0]}`)
+    //            if (!res.ok) {
+    //                throw new Error(res.statusText);
+    //            }
+    //            const data = await res.json();
+    //            //console.log(data)
+    //            if(data) {
+    //                //console.log(data)
+    //                setData1(data);
+    //                setLoadedRooms1(data.rooms)
+    //                //setLoadedRatePlans1(data.ratePlans)
+    //          }
+    //        } catch (err) {
+    //            console.log("could not fetch");
+    //        }
+    //    }
+    //      }, [hotelId])
+    //      console.log('rooms1: ', loadedRooms1)
+
+    //    useEffect(() => {
+    //      fetchRooms();
+    //  }, [fetchRooms])
+
+
+
 
     if(isLoading) {
      return (<section>

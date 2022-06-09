@@ -4,11 +4,20 @@ import classes from "./RoomSizeFilter.module.css";
 import StarFilter from "./StarFilter";
 
 const Filter = () => {
+
+  const starFilterHandler = (starRate) => {
+    console.log(starRate)
+  };
+
+  const numberFilterHandler = (adult, child) => {
+    console.log(adult, child)
+  };
+
   return (
     <Card>
         <div className={classes.filters}>
-            <StarFilter />
-            <RoomSizeFilter />
+            <StarFilter onFilter={starFilterHandler} />
+            <RoomSizeFilter onFilter={numberFilterHandler} />
         </div>
     </Card>
   );

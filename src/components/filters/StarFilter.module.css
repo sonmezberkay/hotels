@@ -14,3 +14,29 @@
     margin-right: .8rem;
     cursor: pointer;
 }
+
+.container {
+    flex-direction: row;
+}
+
+.form {
+    display: flex;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    color: green;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-top: .7rem;
+    outline: none;
+}
+
+.btn:hover {
+    filter: brightness(.8);
+}
+
+.btn:active {
+    transform: scale(.8);
+}

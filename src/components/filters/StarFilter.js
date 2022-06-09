@@ -1,12 +1,14 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import classes from "./StarFilter.module.css";
 
-const StarFilter = () => {
+
+const StarFilter = (props) => {
   const stars = Array(5).fill(0);
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
+
 
   const clickHandler = (value) => {
     setCurrentValue(value);
@@ -20,8 +22,17 @@ const StarFilter = () => {
     setHoverValue(undefined);
   };
 
+  const rate = currentValue;
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    props.onFilter(rate);
+
+  };
+
   return (
     <div className={classes.container}>
+      <form onSubmit={submitHandler} className={classes.form}>
       <div className={classes.star}>
         {stars.map((_, index) => {
           return (
@@ -37,6 +48,8 @@ const StarFilter = () => {
           );
         })}
       </div>
+      <button className={classes.btn}><FontAwesomeIcon icon={faCheck} /></button>
+      </form>
     </div>
   );
 };

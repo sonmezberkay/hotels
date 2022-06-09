@@ -12,7 +12,7 @@ function App() {
         <Route path="/" exact={true}>
           <Home />
         </Route>
-        <Route path="/hotels:id">
+        <Route path="/home/:id">
           <SearchedHotels />
         </Route>
       </Switch>
